@@ -1,0 +1,14 @@
+{
+  "name": "indecision",
+  "version": "1.0.0",
+  "description": "An indecision app to figure out what to do",
+  "main": "index.js",
+  "repository": "git@github.com:briandaviddavidson/indecision.git",
+  "author": "Brian Davidson",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}
