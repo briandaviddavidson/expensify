@@ -1,33 +1,41 @@
 'use strict';
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer'
+};
+
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    app.title
   ),
   React.createElement(
     'p',
     null,
-    'This is some info'
-  ),
-  React.createElement(
-    'ol',
-    null,
-    React.createElement(
-      'li',
-      null,
-      'Test'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Test 2'
-    )
+    app.subtitle
   )
 );
+
+var user = {
+  // name: 'Brian',
+  age: 27,
+  loc: 'DC'
+};
+
+function getLocation(loc) {
+  if (loc) {
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      loc
+    );
+  }
+}
 
 var template2 = React.createElement(
   'div',
@@ -35,18 +43,15 @@ var template2 = React.createElement(
   React.createElement(
     'h1',
     null,
-    'Brian Davidson'
+    user.name ? user.name : 'Anonymous'
   ),
-  React.createElement(
+  user.age >= 18 && React.createElement(
     'p',
     null,
-    'Age: 26'
+    'Age: ',
+    user.age
   ),
-  React.createElement(
-    'p',
-    null,
-    'Location: Washington, DC'
-  )
+  getLocation(user.loc)
 );
 
 var appRoot = document.getElementById('app');
