@@ -2,7 +2,8 @@
 
 var app = {
   title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer'
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['one', 'two']
 };
 
 var template = React.createElement(
@@ -13,10 +14,15 @@ var template = React.createElement(
     null,
     app.title
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     'p',
     null,
     app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'We have options' : 'No options available'
   )
 );
 
@@ -56,4 +62,4 @@ var template2 = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template2, appRoot);
+ReactDOM.render(template, appRoot);

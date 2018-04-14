@@ -1,12 +1,17 @@
 var app = {
   title: 'Indecision App',
   subtitle:'Put your life in the hands of a computer',
+  options: [
+    'one',
+    'two'
+  ],
 }
 
 var template = (
 <div>
   <h1>{app.title}</h1>
-<p>{app.subtitle}</p>
+  {app.subtitle && <p>{app.subtitle}</p>}
+  <p>{app.options.length > 0 ? 'We have options' : 'No options available'}</p>
 </div>
 );
 
@@ -32,4 +37,4 @@ var template2 = (
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template2, appRoot);
+ReactDOM.render(template, appRoot);
