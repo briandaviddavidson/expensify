@@ -12,29 +12,39 @@ const template = (
   <h1>{app.title}</h1>
   {app.subtitle && <p>{app.subtitle}</p>}
   <p>{app.options.length > 0 ? 'We have options' : 'No options available'}</p>
+  <ol>
+    <li>{app.options[0]}</li>
+    <li>{app.options[1]}</li>
+  </ol>
 </div>
 );
 
-const user = {
-  // name: 'Brian',
-  age: 27,
-  loc: 'DC'
-}
-
-function getLocation (loc){
-  if (loc) {
-    return <p>Location: {loc}</p>;
-  }
-}
-
-const template2 = (
-<div>
-  <h1>{user.name ? user.name : 'Anonymous'}</h1>
-{user.age >= 18 && <p>Age: {user.age}</p>}
-{getLocation(user.loc)}
-</div>
-);
+let count = 0;
+const addOne = () => {
+  count++;
+  renderCounter();
+};
+const minusOne = () => {
+  count--;
+  renderCounter();
+};
+const reset = () => {
+  count = 0;
+  renderCounter();
+};
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+const renderCounter = () => {
+  const template2 = (
+    <div>
+      <h1>Count: {count}</h1>
+      <button id="plus" onClick={addOne}>+1</button>
+      <button id="minus" onClick={minusOne}>-1</button>
+      <button id="reset" onClick={reset}>reset</button>
+    </div>
+  )
+  ReactDOM.render(template2, appRoot);
+}
+
+renderCounter();
