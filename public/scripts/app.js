@@ -48,7 +48,17 @@ var render = function render() {
       { onClick: removeAll },
       'Remove All'
     ),
-    React.createElement('ol', null),
+    React.createElement(
+      'ol',
+      null,
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
+    ),
     React.createElement(
       'p',
       null,
