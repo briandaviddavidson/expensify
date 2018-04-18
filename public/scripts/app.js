@@ -79,6 +79,11 @@ var Action = function (_React$Component3) {
   }
 
   _createClass(Action, [{
+    key: 'onClick',
+    value: function onClick() {
+      alert('onClick');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -86,7 +91,7 @@ var Action = function (_React$Component3) {
         null,
         React.createElement(
           'button',
-          null,
+          { onClick: this.onClick },
           'What should I do?'
         )
       );
@@ -106,11 +111,21 @@ var Options = function (_React$Component4) {
   }
 
   _createClass(Options, [{
+    key: 'removeAll',
+    value: function removeAll() {
+      alert('removeAll');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
         null,
+        React.createElement(
+          'button',
+          { onClick: this.removeAll },
+          'Remove All'
+        ),
         this.props.options.map(function (option) {
           return React.createElement(Option, { key: option, option: option });
         }),
@@ -137,11 +152,7 @@ var Option = function (_React$Component5) {
       return React.createElement(
         'div',
         null,
-        React.createElement(
-          'p',
-          null,
-          this.props.option
-        )
+        this.props.option
       );
     }
   }]);
@@ -159,12 +170,32 @@ var AddOption = function (_React$Component6) {
   }
 
   _createClass(AddOption, [{
+    key: 'formSubmitted',
+    value: function formSubmitted(e) {
+      e.preventDefault();
+
+      var opt = e.target.elements.option.value.trim();
+
+      if (opt) {
+        alert(opt);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
         null,
-        'Here is some options'
+        React.createElement(
+          'form',
+          { onSubmit: this.formSubmitted },
+          React.createElement('input', { type: 'text', name: 'option' }),
+          React.createElement(
+            'button',
+            null,
+            'Add Option'
+          )
+        )
       );
     }
   }]);
