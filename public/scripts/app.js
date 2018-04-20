@@ -18,8 +18,9 @@ var IndecisionApp = function (_React$Component) {
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
     _this.handlePick = _this.handlePick.bind(_this);
+    _this.handleAddOption = _this.handleAddOption.bind(_this);
     _this.state = {
-      options: ['1', '2', '3']
+      options: []
     };
     return _this;
   }
@@ -43,6 +44,21 @@ var IndecisionApp = function (_React$Component) {
       alert(option);
     }
   }, {
+    key: 'handleAddOption',
+    value: function handleAddOption(option) {
+      if (!option) {
+        return 'Enter a valid item';
+      } else if (this.state.options.indexOf(option) > -1) {
+        return 'This item already exists';
+      }
+
+      this.setState(function (prevState) {
+        return {
+          options: prevState.options.concat(option)
+        };
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var title = 'Indecision';
@@ -62,7 +78,9 @@ var IndecisionApp = function (_React$Component) {
           options: this.state.options,
           handleDeleteOptions: this.handleDeleteOptions
         }),
-        React.createElement(AddOption, null)
+        React.createElement(AddOption, {
+          handleAddOption: this.handleAddOption
+        })
       );
     }
   }]);
@@ -189,19 +207,26 @@ var AddOption = function (_React$Component6) {
   function AddOption() {
     _classCallCheck(this, AddOption);
 
-    return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+    var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+
+    _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+    _this6.state = {
+      error: undefined
+    };
+    return _this6;
   }
 
   _createClass(AddOption, [{
-    key: 'formSubmitted',
-    value: function formSubmitted(e) {
+    key: 'handleAddOption',
+    value: function handleAddOption(e) {
       e.preventDefault();
 
       var opt = e.target.elements.option.value.trim();
+      var error = this.props.handleAddOption(opt);
 
-      if (opt) {
-        alert(opt);
-      }
+      this.setState(function () {
+        return { error: error };
+      });
     }
   }, {
     key: 'render',
@@ -209,9 +234,14 @@ var AddOption = function (_React$Component6) {
       return React.createElement(
         'div',
         null,
+        this.state.error && React.createElement(
+          'p',
+          null,
+          this.state.error
+        ),
         React.createElement(
           'form',
-          { onSubmit: this.formSubmitted },
+          { onSubmit: this.handleAddOption },
           React.createElement('input', { type: 'text', name: 'option' }),
           React.createElement(
             'button',
