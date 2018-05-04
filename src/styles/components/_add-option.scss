@@ -7,15 +7,25 @@
 
 .add-option {
   display: flex;
+  flex-direction: column;
   padding: $med-size;
 }
 
 .add-option__input {
-  flex-grow: 1;
   background: $dark-blue;
   border: none;
   border-bottom: .3rem solid darken($dark-blue, 10%);
-  margin-right: $sm-size;
   color: $off-white;
-  padding: 0 $sm-size;
+  flex-grow: 1;
+  margin: 0 0 $sm-size 0;
+  padding: $sm-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .add-option {
+    flex-direction: row;
+  }
+  .add-option__input {
+    margin: 0 $sm-size 0 0;
+  }
 }
