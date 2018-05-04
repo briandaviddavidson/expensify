@@ -7,3 +7,11 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: $med-size;
 }
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
