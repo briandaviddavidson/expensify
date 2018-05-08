@@ -1,2 +1,2 @@
-# indecision
-A practice app written in React
+# Expensify
+An application for managing expenses written in react
