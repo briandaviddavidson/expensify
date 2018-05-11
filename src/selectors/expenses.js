@@ -1,6 +1,6 @@
 // get visible expenses
 
-export default = (expenses, {text, sortBy, startDate, endDate}) => {
+export default (expenses, {text, sortBy, startDate, endDate}) => {
   return expenses.filter((expense) => {
     // must be past the start date
     const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
