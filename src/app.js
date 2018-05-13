@@ -12,12 +12,8 @@ import './styles/styles.scss';
 const store = configureStore();
 
 store.dispatch(ADD_EXPENSE({desc: 'water bill', amount: 4500}))
-store.dispatch(ADD_EXPENSE({desc: 'gas bill'}))
-store.dispatch(SET_TEXT_FILTER('water'));
-
-setTimeout(function () {
-  store.dispatch(SET_TEXT_FILTER('gas'));
-}, 3000)
+store.dispatch(ADD_EXPENSE({desc: 'gas bill', createdAt: 7500}))
+store.dispatch(ADD_EXPENSE({desc: 'Rent', amount: 200000}))
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
