@@ -10,6 +10,7 @@
   "scripts": {
     "start": "live-server public/",
     "build": "webpack",
+    "test": "jest",
     "dev-server": "webpack-dev-server",
     "clean": "rm -rf node_modules/ && rm -rf yarn.lock"
   },
