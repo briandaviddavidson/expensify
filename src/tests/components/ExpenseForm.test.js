@@ -47,8 +47,7 @@ test('change amount to valid value', () => {
   const value = '23.50';
   const wrapper = shallow(<ExpenseForm />);
   wrapper.find('input').at(1).simulate('change', {
-    target: { value },
-    match: () => {}
+    target: { value }
   });
   expect(wrapper.state('amount')).toBe(value);
   expect(wrapper).toMatchSnapshot();
@@ -58,8 +57,7 @@ test('change amount to invalid value', () => {
   const value = '12.122';
   const wrapper = shallow(<ExpenseForm />);
   wrapper.find('input').at(1).simulate('change', {
-    target: { value },
-    match: () => {}
+    target: { value }
   });
   expect(wrapper.state('amount')).toBe('');
   expect(wrapper).toMatchSnapshot();
